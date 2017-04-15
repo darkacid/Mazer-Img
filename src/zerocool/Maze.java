@@ -11,26 +11,7 @@ public class Maze {
     {
         loadMaze(filename);
         //printMaze();
-        Node start = createNode(pixels);
 
-
-
-        System.out.println("coordX ="+start.coordX);
-        System.out.println("coordY ="+start.coordY);
-
-
-        System.out.println("endcordx ="+start.endcoordX);
-        System.out.println("endcordy ="+start.endcoordY);
-
-        System.out.println("adjCount = "+start.showAdjCount());
-
-
-        //start.exploreNode(start);
-
-
-    }
-    private Node createNode(int[][] pixels)
-    {
         Node startNode = new Node(pixels);
         for (int x=0;x<pixels.length;x++)
         {
@@ -51,9 +32,25 @@ public class Maze {
             }
         }
         startNode.constructAdj();
+        startNode.isStartNode=true;
+        startNode.inited=true;
 
-        return startNode;
+//        System.out.println("coordX ="+start.coordX);
+//        System.out.println("coordY ="+start.coordY);
+//
+//        System.out.println("endcordx ="+start.endcoordX);
+//        System.out.println("endcordy ="+start.endcoordY);
+
+        Node.exploreNode(startNode);
+
+
     }
+//    private Node createNode(int[][] pixels)
+//    {
+
+//
+//        return startNode;
+//    }
     private  void loadMaze(String filename) throws IOException
     {
         BufferedImage image = ImageIO.read(new File("resource/"+filename));

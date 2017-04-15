@@ -7,8 +7,6 @@ public class Node
     Node(int[][]pixels)
     {
         this.pixels=pixels;
-        constructAdj();
-
 
 
     }
@@ -17,11 +15,12 @@ public class Node
 
     }
 
-
-
     boolean explored=false;
     boolean isStartNode=false;
     boolean isEndNode=false;
+    boolean inited=false;
+
+
 
     int coordX;
     int coordY;
@@ -35,22 +34,25 @@ public class Node
     Node adjTop=null;
     Node adjBottom=null;
 
-    public boolean exploreNode(Node currnode)
+
+
+    public static boolean exploreNode(Node currnode)
     {
-        if(adjLeft!=null)
-            exploreNode(adjLeft);
+        if(currnode.adjLeft!=null)
+            exploreNode(currnode.adjLeft);
+        if(currnode.adjRight!=null)
+            exploreNode(currnode.adjRight);
+        if(currnode.adjBottom!=null)
+            exploreNode(currnode.adjBottom);
+        if(currnode.adjTop!=null)
+            exploreNode(currnode.adjTop);
 
-        if(adjRight!=null)
-            exploreNode(adjRight);
 
-        if(adjBottom!=null)
-            exploreNode(adjBottom);
 
-        if(adjTop!=null)
-            exploreNode(adjTop);
 
-        if(coordX==endcoordX&&coordY==endcoordY)
-            if(coordX!=0&&coordY!=0)
+
+        if(currnode.coordX==currnode.endcoordX&&currnode.coordY==currnode.endcoordY)
+            if(currnode.coordX!=0&&currnode.coordY!=0)
             System.out.println("Path found");
         return true;
     }
@@ -81,13 +83,12 @@ public class Node
         }
 
         //adjTop
-
         if(coordY!=0)
         if(pixels[coordY-1][coordX]==1)
         {
             adjTop=new Node(pixels);
             adjTop.coordX = coordX;
-            adjTop.coordY = coordY+1;
+            adjTop.coordY = coordY-1;
 
             adjTop.endcoordX=endcoordX;
             adjTop.endcoordY=endcoordY;
@@ -99,12 +100,11 @@ public class Node
         {
             adjBottom=new Node(pixels);
             adjBottom.coordX = coordX;
-            adjBottom.coordY = coordY-1;
+            adjBottom.coordY = coordY+1;
 
             adjBottom.endcoordX=endcoordX;
             adjBottom.endcoordY=endcoordY;
         }
-
     }
     public int showAdjCount()
     {
@@ -120,9 +120,6 @@ public class Node
 
         if(adjBottom!=null)
             count++;
-
         return count;
-
     }
-
 }

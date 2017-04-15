@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mazer-Img:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mazer_Img_jar</output-path>
+    <root id="archive" name="Mazer-Img.jar">
+      <element id="module-output" name="Mazer-Img" />
+    </root>
+  </artifact>
+</component>
