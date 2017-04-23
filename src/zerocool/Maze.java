@@ -12,36 +12,9 @@ public class Maze {
         loadMaze(filename);
         //printMaze();
 
-        Node startNode = new Node(pixels);
-        for (int x=0;x<pixels.length;x++)
-        {
-            if(pixels[0][x]==1)
-            {
-                startNode.coordX=x;
-                startNode.isStartNode=true;
-                break;
-            }
-        }
-        int y=pixels[0].length-1;
-        for(int x=0;x<pixels.length;x++)
-        {
-            if(pixels[y][x]==1)
-            {
-                startNode.endcoordX=x;
-                startNode.endcoordY=y;
-            }
-        }
-        startNode.constructAdj();
-        startNode.isStartNode=true;
-        startNode.inited=true;
 
-//        System.out.println("coordX ="+start.coordX);
-//        System.out.println("coordY ="+start.coordY);
-//
-//        System.out.println("endcordx ="+start.endcoordX);
-//        System.out.println("endcordy ="+start.endcoordY);
 
-        Node.exploreNode(startNode);
+       // Node startNode = new Node(pixels);
 
 
     }
@@ -50,6 +23,26 @@ public class Maze {
 
 //
 //        return startNode;
+//    }
+
+//
+//    public boolean exploreNode(Node currnode)
+//    {
+//        if(currnode.adjLeft!=null)
+//            exploreNode(currnode.adjLeft);
+//        if(currnode.adjRight!=null)
+//            exploreNode(currnode.adjRight);
+//        if(currnode.adjBottom!=null)
+//            exploreNode(currnode.adjBottom);
+//        if(currnode.adjTop!=null)
+//            exploreNode(currnode.adjTop);
+//
+//
+//        if(currnode.getCoordX()==currnode.getEndCoordX()&&currnode.getCoordY()==currnode.getEndCoordY())
+//            if(currnode.getCoordX()!=0&&currnode.getCoordY()!=0)
+//                System.out.println("Path found");
+//        return true;
+//
 //    }
     private  void loadMaze(String filename) throws IOException
     {

@@ -7,26 +7,13 @@ public class Node
     Node(int[][]pixels)
     {
         this.pixels=pixels;
-
-
-    }
-    Node()
-    {
-
     }
 
-    boolean explored=false;
-    boolean isStartNode=false;
-    boolean isEndNode=false;
-    boolean inited=false;
+    private int coordX;
+    private int coordY;
 
-
-
-    int coordX;
-    int coordY;
-
-    int endcoordX;
-    int endcoordY;
+    private int endcoordX;
+    private int endcoordY;
 
 
     Node adjLeft=null;
@@ -35,27 +22,12 @@ public class Node
     Node adjBottom=null;
 
 
+    public int getCoordX(){return coordX;}
+    public int getCoordY(){return coordY;}
 
-    public static boolean exploreNode(Node currnode)
-    {
-        if(currnode.adjLeft!=null)
-            exploreNode(currnode.adjLeft);
-        if(currnode.adjRight!=null)
-            exploreNode(currnode.adjRight);
-        if(currnode.adjBottom!=null)
-            exploreNode(currnode.adjBottom);
-        if(currnode.adjTop!=null)
-            exploreNode(currnode.adjTop);
+    public int getEndCoordX(){return endcoordX;}
+    public int getEndCoordY(){return endcoordY;}
 
-
-
-
-
-        if(currnode.coordX==currnode.endcoordX&&currnode.coordY==currnode.endcoordY)
-            if(currnode.coordX!=0&&currnode.coordY!=0)
-            System.out.println("Path found");
-        return true;
-    }
     public void constructAdj()
     {
         //adjLeft
